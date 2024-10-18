@@ -17,7 +17,6 @@ Spotify Japan 急上昇チャートの曲が聴けたり、選択した曲から
 ## 主要機能
 1. ユーザー認証
    - メールアドレスとパスワードを使用したサインアップ/ログイン。
-   - サインアップする際に/src/.local.envを.envに変えてSUPABASEのURLとAPI＿KEYを入れて使用してください
 
 2. 検索機能
    - アーティスト、曲名を入れて検索できます。
@@ -29,3 +28,5 @@ Spotify Japan 急上昇チャートの曲が聴けたり、選択した曲から
    - Spotify APIで得られる楽曲特徴データ(ライブ感、曲の明るさ、テンポ(BPM)、エネルギッシュさ、曲の人気の50以上)から選択した曲と似ている曲が表示されます。
 
 5. ログアウト機能
+
+※/src/.local.envを.envに変えてSUPABASEのURLとAPI＿KEY、REACT_APP_SPOTIFY_CLIENT_ID、REACT_APP_SPOTIFY_CLIENT_SECRETを入れて使用してください
