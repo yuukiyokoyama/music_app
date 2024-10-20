@@ -8,7 +8,6 @@ Spotify Japan 急上昇チャートの曲が聴けたり、選択した曲から
 - React Hooks (useState,useEffect,useContext,useRef)
 - Axios
 - Spotify API
-- Tailwind CSS
 - styled-components
 
 ### バックエンド
