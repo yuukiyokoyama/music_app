@@ -8,7 +8,6 @@ Spotify Japan 急上昇チャートの曲が聴けたり、選択した曲から
 - React Hooks (useState,useEffect,useContext,useRef)
 - Axios
 - Spotify API
-- Tailwind CSS
 - styled-components
 
 ### バックエンド
@@ -28,3 +27,5 @@ Spotify Japan 急上昇チャートの曲が聴けたり、選択した曲から
    - Spotify APIで得られる楽曲特徴データ(ライブ感、曲の明るさ、テンポ(BPM)、エネルギッシュさ、曲の人気の50以上)から選択した曲と似ている曲が表示されます。
 
 5. ログアウト機能
+
+※/src/.env.localを.envに変えてSUPABASEのURLとAPI＿KEY、REACT_APP_SPOTIFY_CLIENT_ID、REACT_APP_SPOTIFY_CLIENT_SECRETを入れて使用してください
