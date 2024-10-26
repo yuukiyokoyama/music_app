@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { authRepository } from "../repositories/auth"; // 認証関連の関数をインポート
 import { SessionContext } from "../SessionProvider"; // セッション管理のコンテキストをインポート
 import spotify from "../lib/spotify";
-import SearchInput from "../components/Searchinput";
+import SearchInput from "../components/SearchInput";
 import SongList from "../components/SongList";
 import Player from "../components/Player";
 import SimilarSongsModal from "../components/SimilarSongsModal";
@@ -85,20 +85,21 @@ const Home = () => {
   // isPlay: 現在、曲が再生中か停止中かを示す。再生中ならtrue、停止中ならfalse。
   const [isPlay, setIsPlay] = useState(false);
   // selectedSong: ユーザーが選んだ曲の情報が入る。プレイヤーで再生される曲になる。
-  const [selectedSong, setSelectedSong] = useState();
+  const [selectedSong, setSelectedSong] = useState(null); // 初期値を null に設定
   // keyword: 検索ボックスに入力されたキーワードを保持する。
   const [keyword, setkeyword] = useState("");
   // searchedSongs: キーワードに基づいて検索された曲のリストを保持する。
-  const [searchedSongs, setSearchedSongs] = useState();
+  const [searchedSongs, setSearchedSongs] = useState([]);
   // isModalOpen: 類似曲モーダルが表示されているかどうかを示すブール値。trueならモーダルが開く。
   const [isModalOpen, setIsModalOpen] = useState(false);
   // modalSelectedSong: 類似曲モーダルで表示する曲の情報。
-  const [modalSelectedSong, setModalSelectedSong] = useState(null);
+  const [modalSelectedSong, setModalSelectedSong] = useState(null); // 初期値を null に設定
   const audioRef = useRef(null);
   // previousSong: 前に再生していた曲を覚えておくための状態。モーダルが閉じたときに使う。
   const [previousSong, setPreviousSong] = useState(null);
   // isModalPlaying: モーダルで再生中かどうかを示す。
   const [isModalPlaying, setIsModalPlaying] = useState(false);
+
   useEffect(() => {
     fetchPopularSongs();
   }, []);
@@ -182,7 +183,7 @@ const Home = () => {
 
   const searchSongs = async () => {
     if (keyword.trim() === "") {
-      setSearchedSongs(null);
+      setSearchedSongs([]);
       return;
     }
     setIsLoading(true);
@@ -225,24 +226,28 @@ const Home = () => {
           {/* 楽曲リストセクション */}
           <Section>
             {/* セクションタイトル（検索結果か人気曲を表示） */}
-            <SectionTitle>{searchedSongs ? "検索結果" : "人気曲"}</SectionTitle>
+            <SectionTitle>
+              {searchedSongs.length > 0 ? "検索結果" : "人気曲"}
+            </SectionTitle>
 
             {/* 楽曲リストを表示 */}
             <SongList
               isLoading={isLoading}
-              songs={searchedSongs || popularSongs}
+              songs={searchedSongs.length > 0 ? searchedSongs : popularSongs}
               onSongSelected={handleSongSelected}
             />
           </Section>
         </MainContent>
 
         {/* 類似曲のモーダル */}
-        <SimilarSongsModal
-          isOpen={isModalOpen}
-          onClose={handleModalClose}
-          selectedSong={modalSelectedSong}
-          onSongPlay={handleModalSongPlay}
-        />
+        {modalSelectedSong && (
+          <SimilarSongsModal
+            isOpen={isModalOpen}
+            onClose={handleModalClose}
+            selectedSong={modalSelectedSong}
+            onSongPlay={handleModalSongPlay}
+          />
+        )}
 
         {/* プレイヤーコンポーネント */}
         {selectedSong != null && (
@@ -259,4 +264,5 @@ const Home = () => {
     </PageContainer>
   );
 };
+
 export default Home;

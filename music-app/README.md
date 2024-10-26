@@ -28,4 +28,4 @@ Spotify Japan 急上昇チャートの曲が聴けたり、選択した曲から
 
 5. ログアウト機能
 
-※/src/.env.localを.envに変えてSUPABASEのURLとAPI＿KEY、REACT_APP_SPOTIFY_CLIENT_ID、REACT_APP_SPOTIFY_CLIENT_SECRETを入れて使用してください
+※/.env.localを.envに変えてSUPABASEのURLとAPI＿KEY、REACT_APP_SPOTIFY_CLIENT_ID、REACT_APP_SPOTIFY_CLIENT_SECRETを入れて使用してください

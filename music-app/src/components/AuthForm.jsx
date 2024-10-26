@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import PropTypes from 'prop-types'; // PropTypesをインポート
+import PropTypes from "prop-types"; // PropTypesをインポート
 import { Link } from "react-router-dom";
 
 export const PageContainer = styled.div`
@@ -103,8 +103,8 @@ const AuthForm = ({
   setEmail,
   password,
   setPassword,
-  name,
-  setName,
+  name = "", // デフォルト値をここで指定
+  setName = () => {}, // デフォルト値をここで指定
   onSubmit,
   isDisabled,
 }) => {
@@ -185,11 +185,6 @@ AuthForm.propTypes = {
   setName: PropTypes.func,
   onSubmit: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool.isRequired,
-};
-
-AuthForm.defaultProps = {
-  name: "",
-  setName: () => {},
 };
 
 export default AuthForm;
