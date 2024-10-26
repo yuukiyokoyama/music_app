@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { authRepository } from "../repositories/auth"; // 認証関連の関数をインポート
 import { SessionContext } from "../SessionProvider"; // セッション管理のコンテキストをインポート
 import spotify from "../lib/spotify";
-import SearchInput from "../components/SearchInput";
+import SearchInput from "../components/Searchinput";
 import SongList from "../components/SongList";
 import Player from "../components/Player";
 import SimilarSongsModal from "../components/SimilarSongsModal";
